@@ -1,0 +1,62 @@
+<!-- <div class="bootstrap-wrapper">
+
+    <div class = "container text-center">
+        <h1>Welcome to Patient Application.</h1>
+        
+        <a routerLink = "/login"    type="button" class="btn btn-primary">Login</a>
+
+        <a style="margin-left: 10px;"  routerLink = "/register"    type="button" class="btn btn-primary">Register</a>
+
+    </div>
+</div> -->
+
+
+
+
+
+<div class="login-box">
+    <div class="lb-header">
+      <!-- class="active" -->
+      <a type="button" (click)="activateLogin()"  id="login-box-link">Login</a>
+      <a type="button" (click)="activateSignUp()" id="signup-box-link">Sign Up</a>
+    </div>
+    <!-- Login form -->
+    <form class="email-login" *ngIf="login" #patientLogin="ngForm" (ngSubmit)="onLogin(patientLogin)">
+      <div class="u-form-group">
+        <input type="email" placeholder="Email" [(ngModel)]="patient.email" name="email" />
+      </div>
+      <div class="u-form-group">
+        <input type="password" placeholder="Password" [(ngModel)]="patient.password" name="password"/>
+      </div>
+      <div class="u-form-group">
+        <button type="submit" (click)="onLogin(patientLogin)">Log in</button>
+      </div>
+    </form>
+
+
+    <pre>{{ patient | json }}</pre> -->
+    <!-- Register form -->
+    <form class="email-signup" *ngIf="signup" #patientSignUp="ngForm"  (ngSubmit)="onSubmit(patientSignUp)" >
+      <div class="u-form-group">
+        <input type="email" id="floatingPassword" placeholder="First Name"[(ngModel)]="patient.firstName" name="firstName" />
+      </div>
+      <div class="u-form-group">
+        <input type="email" id="floatingPassword" placeholder="Last Name"[(ngModel)]="patient.lastName" name="lastName" />
+      </div>
+      <div class="u-form-group">
+        <input type="email" id="floatingPassword" placeholder="Email"[(ngModel)]="patient.email" name="email" />
+      </div>
+      <div class="u-form-group">
+        <input type="password" id="floatingPassword" placeholder="Password" [(ngModel)]="patient.password" name="password" />
+      </div>
+
+      <div class="u-form-group">
+        <button type="button" (click)="onSubmit(patientSignUp)">Sign Up</button>
+      </div>
+    </form>
+  </div>
+
+
+
+
+  
