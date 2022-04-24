@@ -1,84 +1,20 @@
 <app-nav-bar></app-nav-bar>
 
-<div class="bootstrap-wrapper">
-    <div class = "container text-center">
-        <h1>Hello Patient</h1>
-        <p> The following are the sections to completed by you!</p>
-        
-        <button class="btn btn-primary" [disabled] = "sec_1" style="margin-left: 0px;" type="radio" (click)="section1()">Section-1</button>
-        <button class="btn btn-primary" [disabled] = "sec_2" style="margin-left: 250px;" type="button" (click)="section2()">Section-2</button>
-        <button class="btn btn-primary" [disabled] = "sec_3" style="margin-left: 250px;" type="button" (click)="section3()">Section-3</button>
-
-        <!-- <div class="questions" *ngFor="let que of questions" >
-            <span>
-                <h1>Q {{que.q_no}}) {{que.question}}</h1>
-            </span>  
-
-            <div class="btn-group" role="group" ngbRadioGroup name="radioBasic" >
-                <label ngbButtonLabel class="btn btn-primary">
-                  <input ngbButton type="radio" class="btn-check" [value]="1" (click)="answer(true)"> Yes
-                </label>
-                
-                <label ngbButtonLabel class="btn btn-primary" style="margin-left: 30px;">
-                  <input ngbButton type="radio" class="btn-check" [value]="2" (click)="answer(false)"> No
-                </label>
-            </div>
-
-        </div> -->
-<!-- ------------------------------------------------------------------------------------------------ -->
-        <div class="questions" *ngIf="submitted">
-            <span>
-                <h1>Q{{questions[0].q_no}}) {{questions[0].question}}</h1>
-            </span>  
-
-            <div class="btn-group" role="group" ngbRadioGroup name="radioBasic" >
-
-                <label ngbButtonLabel>
-                    <button class="btn btn-primary" [disabled] = "option1" style="margin-left: 0px;" type="radio" (click) = "answer(true,1)">Yes</button>
-                </label>
-                
-                <label ngbButtonLabel style="margin-left: 30px;">
-                    <button class="btn btn-primary" [disabled] = "option1" style="margin-left: 0px;" type="radio" (click) = "answer(false,1)">No</button>
-                </label>
-            </div>
-
-            <span>
-                <h1>Q{{questions[1].q_no}}) {{questions[1].question}}</h1>
-            </span>  
-
-            
-            <div class="btn-group" role="group" ngbRadioGroup name="radioBasic" >
-
-                <label ngbButtonLabel>
-                    <button class="btn btn-primary" [disabled] = "option2" style="margin-left: 0px;" type="radio" (click) = "answer(true,2)">Yes</button>
-                </label>
-                
-                <label ngbButtonLabel style="margin-left: 30px;">
-                    <button class="btn btn-primary" [disabled] = "option2" style="margin-left: 0px;" type="radio" (click) = "answer(false,2)">No</button>
-                </label>
-            </div>
-
-
-            <span>
-                <h1>Q{{questions[2].q_no}}) {{questions[2].question}}</h1>
-            </span>  
-
-            
-            <div class="btn-group" role="group" ngbRadioGroup name="radioBasic" >
-
-                <label ngbButtonLabel>
-                    <button class="btn btn-primary" [disabled] = "option3" style="margin-left: 0px;" type="radio" (click) = "answer(true,3)">Yes</button>
-                </label>
-                
-                <label ngbButtonLabel style="margin-left: 30px;">
-                    <button class="btn btn-primary" [disabled] = "option3" style="margin-left: 0px;" type="radio" (click) = "answer(false,3)">No</button>
-                </label>
-            </div>
-
-        </div>
-
-        <button *ngIf="submitted" class="btn btn-primary questions" style="margin-left: 0px;" type="button" (click)="submit()">Submit</button>
-    </div>
-
-    
-</div>
+<html>
+  <head>
+    <title>jQuery Show/Hide text Toggle Example</title>
+  </head>
+  <body class="con">
+    <span class="show-text">
+      Bonbon bonbon gummi bears pudding. Dessert chupa chups macaroon cookie muffin dessert. Toffee powder candy canes tart lollipop brownie marshmallow chocolate bar. Fruitcake danish sesame snaps biscuit sesame snaps apple pie. Bear claw jelly-o dragée chocolate. Bonbon topping chocolate bar. Dessert chocolate bar pastry tiramisu. Gummi bears gummies brownie jujubes sesame snaps croissant danish. Gummies danish oat cake caramels cotton candy pastry fruitcake sweet. Topping gingerbread biscuit halvah cupcake candy canes sesame snaps.
+    </span>
+    <br><br>
+    <span class="show-text">
+      Biscuit brownie powder gummies macaroon cupcake cupcake gummies. Macaroon chocolate cake jelly beans pie gummies sweet macaroon. Brownie chocolate bar brownie chocolate bar sweet roll. Marzipan caramels halvah jelly beans cheesecake muffin pie halvah marzipan. Bonbon caramels tootsie roll pudding cupcake. Lollipop sesame snaps lollipop soufflé jelly beans powder sweet ice cream chocolate cake. Biscuit lollipop biscuit bear claw. Gummies caramels danish wafer. Icing chocolate caramels donut. Chupa chups candy canes bonbon chocolate cake chocolate cake. Fruitcake fruitcake tiramisu. Ice cream sugar plum halvah donut halvah tiramisu cake candy. Bonbon chupa chups dragée sesame snaps oat cake.
+    </span>
+    <br><br>
+    <span class="show-text">
+Tart cookie dragée jelly-o tootsie roll lemon drops. Oat cake tart icing oat cake dragée tiramisu gummies caramels muffin. Chupa chups apple pie toffee marzipan ice cream soufflé gummies. Bonbon gummies caramels pie carrot cake. Carrot cake sweet roll soufflé croissant jujubes brownie. Jelly-o gummies cake gingerbread sesame snaps apple pie chocolate fruitcake. Danish tiramisu cake chocolate carrot cake tootsie roll.
+    </span>
+  </body>
+</html>

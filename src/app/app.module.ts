@@ -21,6 +21,8 @@ import { SectionsComponent } from './components/sections/sections.component';
 import { LoginService } from './services/login.service';
 import { AuthGuard } from './services/auth.guard';
 import { TasksComponent } from './components/tasks/tasks.component';
+import { MessagesComponent } from './components/messages/messages.component';
+import { Messages1Component } from './components/messages1/messages1.component';
 // import { AuthInterceptor } from './services/auth.interceptor';  ==> uncomment when you need JWT for all API calls
 
 @NgModule({
@@ -33,7 +35,9 @@ import { TasksComponent } from './components/tasks/tasks.component';
     NavBarComponent,
     HomeComponent,
     SectionsComponent,
-    TasksComponent
+    TasksComponent,
+    MessagesComponent,
+    Messages1Component
   ],
   imports: [
     BrowserModule,

@@ -2,3 +2,23 @@
 {
     margin-top: 30px;
 }
+
+@import url(https://fonts.googleapis.com/css?family=Sofia);
+
+.con {
+    background-color: #fffeee;
+    color: #918D91;
+    width: 50%;
+    margin: 2% auto;
+/*     font-family: 'Sofia'; */
+    font-size: 1.2em;
+}
+
+.morecontent span {
+    display: none;
+}
+
+.morelink {
+    font-weight: bold;
+    color: #4682b4;
+}
