@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Messages } from 'src/app/messages';
+import { MessagesService } from 'src/app/services/messages.service';
 
 @Component({
   selector: 'app-messages1',
@@ -7,9 +9,47 @@ import { Component, OnInit } from '@angular/core';
 })
 export class Messages1Component implements OnInit {
 
-  constructor() { }
+  constructor(private messageService: MessagesService) { }
 
-  ngOnInit(): void {
+  messages:Messages[] = [];
+  fname: string = localStorage.getItem("fname")!;
+
+  messageToBeSent : Messages = new Messages();
+  
+  ngOnInit(): void 
+  {
+    var pat_id = localStorage.getItem("id");
+    this.messageService.getMessages(pat_id!).subscribe(
+      (data:any) => {
+        this.messages = data;
+        console.log("Messages obtaiend are hey",this.messages);
+        window.scrollTo(0, document.body.scrollHeight);
+        // ('.chat-history')[0].scrollTop = ('.chat-history')[0].scrollHeight
+      },
+      (error:any) => {console.log('Error fetching questions!',error)}
+    )
+
+    
   }
+
+
+  public onSendMessage(messageToBeSent:Messages)
+  {
+    console.log("messageToBeSent is " , messageToBeSent);
+    messageToBeSent.postedBy = true;
+    this.messageService.sendMessage(messageToBeSent).subscribe(
+      (data:any) => {
+        console.log("Message successfully stored!",data);
+        messageToBeSent.message = "";
+        // window.scrollTo(0, document.body.scrollHeight);
+
+        this.ngOnInit();
+      },
+      (error:any) => {console.log('Could not store message!',error)}
+    )
+   
+  }
+
+
 
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { PatientResponses } from 'src/app/patient-responses';
+import { ProgressAndSectionsService } from 'src/app/services/progress-and-sections.service';
 import { QuestionsService } from 'src/app/services/questions.service';
 import { StoreResponsesService } from 'src/app/services/store-responses.service';
 
@@ -12,16 +13,278 @@ import { StoreResponsesService } from 'src/app/services/store-responses.service'
 export class TasksComponent implements OnInit {
 
   constructor(private questionService : QuestionsService,private router : Router
-    ,private storeResponseService : StoreResponsesService) { }
+    ,private storeResponseService : StoreResponsesService , private progressAndSectionsService: ProgressAndSectionsService) { }
+
+    progress:number = 0;
+    order:any[] = [];
+
+    one:boolean = false;
+    two:boolean = false;
+    three:boolean = false;
+    four:boolean = false;
+    five:boolean = false;
+    six:boolean = false;
+    seven:boolean = false;
+    eight:boolean = false;
 
   ngOnInit(): void {
+    this.checkProgress();
   }
+
+
+
+checkProgress()
+{
+  this.progressAndSectionsService.getCurrentSection().subscribe(
+    (data:any) => {
+
+      console.log("Current section is ",data);
+      this.progress = data;
+      
+    },
+    (error:any) => {console.log('Error obtaining current section!',error)}
+  )
+
+  this.progressAndSectionsService.getOrderSet().subscribe(
+    (data:any) => 
+    {
+      var temp = "second";
+      console.log("JSON format order obtained is ",data);
+      console.log("progress of user is",this.progress);
+      
+      if(this.progress==0) //change this to == 0
+      {
+        localStorage.setItem("section",1+"");
+        //enable only 1st section
+        this.one = true;
+        // this.loadSection(1);
+      }
+      else
+      {
+        var index = 0;
+        this.order[0]=data.first; this.order[1]= data.second; this.order[2]=data.third; this.order[3]=data.fourth;
+        this.order[4]=data.fifth; this.order[5]=data.sixth; this.order[6]=data.seventh; this.order[7]=data.eigth;
+        // delete this.order[4];
+
+        if(this.order[4]==undefined)
+          console.log("I am undefined");
+
+        console.log("Array of order is ",this.order);
+
+        for(var i=0;i<this.order.length-1;i++)
+        {
+          if(this.order[i]==this.progress+"") // if user completed all the mandatory sections
+          {
+            
+            if(this.order[i+1]=="0") // all mandatory sections are done! enable all faltu sections and disable the completed sections
+            {
+              console.log("entered faltu sectoin")
+              //disable order[i]
+              this.loadAllRemSections(i+1);
+              break;
+            }
+            else // there are still mandatory sectoins to be completed
+            {
+              //store the next section to load this in section component.
+              localStorage.setItem("section",this.order[i+1]+"");
+              if (this.order[i+1] == 1)
+                this.one = true;
+              else if (this.order[i+1] == 2)
+                this.two = true;
+              else if (this.order[i+1] == 3)
+                this.three = true;
+              else if (this.order[i+1] == 4)
+                this.four = true;
+              else if (this.order[i+1] == 5)
+                this.five = true;
+              else if (this.order[i+1] == 6)
+                this.six = true;
+              else if (this.order[i+1] == 7)
+                this.seven = true;
+              else if (this.order[i+1] == 8)
+                this.eight = true;
+
+              if (this.order[i] == 1)
+                this.one = false;
+              else if (this.order[i] == 2)
+                this.two = false;
+              else if (this.order[i] == 3)
+                this.three = false;
+              else if (this.order[i] == 4)
+                this.four = false;
+              else if (this.order[i] == 5)
+                this.five = false;
+              else if (this.order[i] == 6)
+                this.six = false;
+              else if (this.order[i] == 7)
+                this.seven = false;
+              else if (this.order[i] == 8)
+                this.eight = false;
+
+            }
+          }
+        }
+      }
+    },
+    (error:any) => {console.log('Error obtaining progress set orders!',error)}
+  )
+
+}
+
+
+
+
+loadSection(sec_id:number)
+{
+  localStorage.setItem("section",sec_id+"");
+  this.router.navigate(['sections']);
+}
+
+
+
+
+
+loadAllRemSections(i:number)
+{
+  var rem: number[] = [1,2,3,4,5,6,7,8]
+// disable the completed sections
+  for(var j=0;j<=i+1;j++)
+  {
+    if(this.order[j]==1)
+    {
+      this.one = false;
+      delete rem[0];
+    }
+    else if(this.order[j]==2)
+    {
+      this.two = false;
+      delete rem[1];
+    }
+    else if(this.order[j]==3)
+    {
+      this.three = false;
+      delete rem[2];
+    }
+    else if(this.order[j]==4)
+    {
+      this.four = false;
+      delete rem[3];
+    }
+    else if(this.order[j]==5)
+    {
+      this.five = false;
+      delete rem[4];
+    }
+    else if(this.order[j]==6)
+    {
+      this.six = false;
+      delete rem[5];
+    }
+    else if(this.order[j]==7)
+    {
+      this.seven = false;
+      delete rem[6];
+    }
+    else if(this.order[j]==8)
+    {
+      this.eight = false;
+      delete rem[7];
+    }
+  }
+// enable the remaining sections other than the disabled
+  for(var j=0;j<rem.length;j++)
+  {
+    if(rem[j]!=undefined)
+    {
+      if(rem[j]==1)
+        this.one = true;
+      else if(rem[j]==2)
+        this.two = true;
+      else if(rem[j]==3)
+        this.three = true;
+      else if(rem[j]==4)
+        this.four = true;
+      else if(rem[j]==5)
+        this.five = true;
+      else if(rem[j]==6)
+        this.six = true;
+      else if(rem[j]==7)
+        this.seven = true;
+      else if(rem[j]==8)
+        this.eight = true;
+    }
+    
+  }
+  console.log("rem sections array is ",rem);
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   patientResponses: PatientResponses = new PatientResponses();
 
   questions: { q_no: number; question: string; }[] = [];
  
-  responses:boolean[] = []
+  responses:number[] = []
   question_ids: number[] = []
 
   objects: {responses : boolean[] ; questions_ids:number[] } [] = [];
@@ -133,7 +396,7 @@ export class TasksComponent implements OnInit {
     // window.location.href = "/sections"
   }
 
-  public answer(ans : boolean,option: number)
+  public answer(ans : number,option: number)
   {
     if(option==1)
     {
@@ -184,6 +447,12 @@ export class TasksComponent implements OnInit {
       (error:any)=>{ console.log(error)}
       );
   }
+
+
+  // public loadSection()
+  // {
+  //   this.router.navigate(['sections']);
+  // }
 
 
 }

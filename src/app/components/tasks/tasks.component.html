@@ -1,13 +1,100 @@
 <app-nav-bar></app-nav-bar>
 
+
+
 <div class="bootstrap-wrapper">
     <div class = "container text-center">
-        <h1>Hello Patient</h1>
+
+        <section class="wrapper">
+            <!-- <nav aria-label="Page navigation example">
+              <ul class="pagination justify-content-center" >
+                <li class="page-item"><button  type="button" class="page-link" value="Hello" (click)="loadSection(1)">A</button></li>
+                <li class="page-item"><button  type="button" class="page-link" value="Hello" (click)="loadSection(1)">A</button></li>
+                <li class="page-item"><button  type="button" class="page-link" value="Hello" (click)="loadSection(1)">A</button></li>
+                <li class="page-item"><button  type="button" class="page-link" value="Hello" (click)="loadSection(1)">A</button></li>
+                <li class="page-item"><button  type="button" class="page-link" value="Hello" (click)="loadSection(1)">A</button></li>
+              </ul>
+            </nav> -->
+        </section>
+
+        <div *ngIf="one; then thenBlock1 else elseBlock1"></div>
+        <ng-template #thenBlock1>
+            <button type="button" class="btn btn-outline-primary" (click)="loadSection(1)">Section-1</button>
+        </ng-template>
+        <ng-template #elseBlock1>
+            <button type="button" class="btn btn-outline-danger" (click)="loadSection(1)" disabled>Section-1</button>
+        </ng-template>
+
+        <div *ngIf="two; then thenBlock2 else elseBlock2"></div>
+        <ng-template #thenBlock2>
+            <button type="button" class="btn btn-outline-primary" (click)="loadSection(2)">Section-2</button>
+        </ng-template>
+        <ng-template #elseBlock2>
+            <button type="button" class="btn btn-outline-danger" (click)="loadSection(2)" disabled>Section-2</button>
+        </ng-template>
+
+        <span *ngIf="three; then thenBlock3 else elseBlock3"></span>
+        <ng-template #thenBlock3>
+            <button type="button" class="btn btn-outline-primary" (click)="loadSection(3)">Section-3</button>
+        </ng-template>
+        <ng-template #elseBlock3>
+            <button type="button" class="btn btn-outline-danger" (click)="loadSection(3)" disabled>Section-3</button>
+        </ng-template>
+
+        <span *ngIf="four; then thenBlock4 else elseBlock4"></span>
+        <ng-template #thenBlock4>
+            <button type="button" class="btn btn-outline-primary" (click)="loadSection(4)">Section-4</button>
+        </ng-template>
+        <ng-template #elseBlock4>
+            <button type="button" class="btn btn-outline-danger" (click)="loadSection(4)" disabled>Section-4</button>
+        </ng-template>
+
+        <span *ngIf="five; then thenBlock5 else elseBlock5"></span>
+        <ng-template #thenBlock5>
+            <button type="button" class="btn btn-outline-primary" (click)="loadSection(5)">Section-5</button>
+        </ng-template>
+        <ng-template #elseBlock5>
+            <button type="button" class="btn btn-outline-danger" (click)="loadSection(5)" disabled>Section-5</button>
+        </ng-template>
+
+        <span *ngIf="six; then thenBlock6 else elseBlock6"></span>
+        <ng-template #thenBlock6>
+            <button type="button" class="btn btn-outline-primary" (click)="loadSection(6)">Section-6</button>
+        </ng-template>
+        <ng-template #elseBlock6>
+            <button type="button" class="btn btn-outline-danger" (click)="loadSection(6)" disabled>Section-6</button>
+        </ng-template>
+
+        <span *ngIf="seven; then thenBlock7 else elseBlock7"></span>
+        <ng-template #thenBlock7>
+            <button type="button" class="btn btn-outline-primary" (click)="loadSection(7)">Section-7</button>
+        </ng-template>
+        <ng-template #elseBlock7>
+            <button type="button" class="btn btn-outline-danger" (click)="loadSection(7)" disabled>Section-7</button>
+        </ng-template>
+
+        <span *ngIf="eight; then thenBlock8 else elseBlock8"></span>
+        <ng-template #thenBlock8>
+            <button type="button" class="btn btn-outline-primary" (click)="loadSection(8)">Section-8</button>
+        </ng-template>
+        <ng-template #elseBlock8>
+            <button type="button" class="btn btn-outline-danger" (click)="loadSection(8)" disabled>Section-8</button>
+        </ng-template>
+
+       
+        <!-- <button type="button" class="btn btn-outline-secondary">Secondary</button>
+        <button type="button" class="btn btn-outline-success">Success</button>
+        <button type="button" class="btn btn-outline-danger">Danger</button>
+        <button type="button" class="btn btn-outline-warning">Warning</button>
+        <button type="button" class="btn btn-outline-info">Info</button>
+        <button type="button" class="btn btn-outline-light">Light</button>
+        <button type="button" class="btn btn-outline-dark">Dark</button> -->
+        <!-- <h1>Hello Patient</h1>
         <p> The following are the sections to completed by you!</p>
         
         <button class="btn btn-primary" [disabled] = "sec_1" style="margin-left: 0px;" type="radio" (click)="section1()">Section-1</button>
         <button class="btn btn-primary" [disabled] = "sec_2" style="margin-left: 250px;" type="button" (click)="section2()">Section-2</button>
-        <button class="btn btn-primary" [disabled] = "sec_3" style="margin-left: 250px;" type="button" (click)="section3()">Section-3</button>
+        <button class="btn btn-primary" [disabled] = "sec_3" style="margin-left: 250px;" type="button" (click)="section3()">Section-3</button> -->
 
         <!-- <div class="questions" *ngFor="let que of questions" >
             <span>
@@ -34,11 +121,11 @@
             <div class="btn-group" role="group" ngbRadioGroup name="radioBasic" >
 
                 <label ngbButtonLabel>
-                    <button class="btn btn-primary" [disabled] = "option1" style="margin-left: 0px;" type="radio" (click) = "answer(true,1)">Yes</button>
+                    <button class="btn btn-primary" [disabled] = "option1" style="margin-left: 0px;" type="radio" (click) = "answer(3,1)">Yes</button>
                 </label>
                 
                 <label ngbButtonLabel style="margin-left: 30px;">
-                    <button class="btn btn-primary" [disabled] = "option1" style="margin-left: 0px;" type="radio" (click) = "answer(false,1)">No</button>
+                    <button class="btn btn-primary" [disabled] = "option1" style="margin-left: 0px;" type="radio" (click) = "answer(4,1)">No</button>
                 </label>
             </div>
 
@@ -50,11 +137,11 @@
             <div class="btn-group" role="group" ngbRadioGroup name="radioBasic" >
 
                 <label ngbButtonLabel>
-                    <button class="btn btn-primary" [disabled] = "option2" style="margin-left: 0px;" type="radio" (click) = "answer(true,2)">Yes</button>
+                    <button class="btn btn-primary" [disabled] = "option2" style="margin-left: 0px;" type="radio" (click) = "answer(1,2)">Yes</button>
                 </label>
                 
                 <label ngbButtonLabel style="margin-left: 30px;">
-                    <button class="btn btn-primary" [disabled] = "option2" style="margin-left: 0px;" type="radio" (click) = "answer(false,2)">No</button>
+                    <button class="btn btn-primary" [disabled] = "option2" style="margin-left: 0px;" type="radio" (click) = "answer(1,2)">No</button>
                 </label>
             </div>
 
@@ -67,11 +154,11 @@
             <div class="btn-group" role="group" ngbRadioGroup name="radioBasic" >
 
                 <label ngbButtonLabel>
-                    <button class="btn btn-primary" [disabled] = "option3" style="margin-left: 0px;" type="radio" (click) = "answer(true,3)">Yes</button>
+                    <button class="btn btn-primary" [disabled] = "option3" style="margin-left: 0px;" type="radio" (click) = "answer(1,3)">Yes</button>
                 </label>
                 
                 <label ngbButtonLabel style="margin-left: 30px;">
-                    <button class="btn btn-primary" [disabled] = "option3" style="margin-left: 0px;" type="radio" (click) = "answer(false,3)">No</button>
+                    <button class="btn btn-primary" [disabled] = "option3" style="margin-left: 0px;" type="radio" (click) = "answer(1,3)">No</button>
                 </label>
             </div>
 
@@ -82,4 +169,4 @@
 
     
 </div>
-<p>tasks works!</p>
+

@@ -1,2 +1,59 @@
-<p>sections works!</p>
-<h1>{{"Questions are " + questions + "this"}}</h1>
+<!-- <app-nav-bar></app-nav-bar> -->
+<section class="wrapper">
+
+    <html>
+
+        <head>
+          <title> Sections </title>
+        </head>
+        
+        <body>
+
+          <a href="tasks" class="cbutton">BACK</a>
+          <h1 style="text-align: center;">Section 1</h1>
+        
+          <div *ngIf="questionsLoaded">
+          <!--Q5-->
+          <form #patientForm="ngForm">
+            
+
+            <br>
+            <label>{{questions[0].id}} ) {{questions[0].question}}</label>
+            <select class="form-control" #p (change)="pa(p.value)">
+              <option *ngFor="let option of options" [value]="option">{{this.option}}</option>
+            </select>
+            <br>
+
+            <label>{{questions[1].id}} ) {{questions[1].question}}</label>
+            <select class="form-control" #q (change)="qa(q.value)">
+              <option *ngFor="let option of options" [value]="option">{{this.option}}</option>
+            </select>
+            <br>
+
+            <label>{{questions[2].id}} ) {{questions[2].question}}</label>
+            <select class="form-control" #r (change)="ra(r.value)">
+              <option *ngFor="let option of options" [value]="option">{{this.option}}</option>
+            </select>
+            <br>
+
+            <!-- <label>{{questions[3].id}} ) {{questions[3].question}}</label>
+            <select class="form-control" #t (change)="callType(t.value)">
+              <option *ngFor="let option of options" [value]="option">{{this.option}}</option>
+            </select>
+            <br>
+
+            <label>{{questions[4].id}} ) {{questions[4].question}}</label>
+            <select class="form-control" #t (change)="callType(t.value)">
+              <option *ngFor="let option of options" [value]="option">{{this.option}}</option>
+            </select>
+            <br> -->
+
+            
+            <input type="submit" name="submit" value="Submit" (click)="onSubmit()">
+          </form>
+          </div>
+        </body>
+    </html>
+
+    
+</section>

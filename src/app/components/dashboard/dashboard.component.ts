@@ -1,8 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { PatientResponses } from 'src/app/patient-responses';
 import { QuestionsService } from 'src/app/services/questions.service';
 import { StoreResponsesService } from 'src/app/services/store-responses.service';
+import {NgbActiveModal, NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
+
+import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { MoodService } from 'src/app/services/mood.service';
+
+// import { NgbdModalComponent, NgbdModalContent } from './modal-component';
 
 @Component({
   selector: 'app-dashboard',
@@ -13,16 +22,28 @@ import { StoreResponsesService } from 'src/app/services/store-responses.service'
 export class DashboardComponent implements OnInit {
 
   constructor(private questionService : QuestionsService,private router : Router
-    ,private storeResponseService : StoreResponsesService) { }
+    ,private storeResponseService : StoreResponsesService,private modalService: BsModalService,
+    private moodService:MoodService) { }
 
-  ngOnInit(): void {
-  }
-
+    template!: TemplateRef<any>; 
+    templateLoad: boolean = false;
+    ngOnInit(): void 
+    {
+      if(localStorage.getItem("mood")=="false")
+        this.moodSubmitted = false;
+      else
+      {
+        this.moodSubmitted = true;
+      }
+    //   this.templateLoad = false;
+    //   this.openModal(this.template!);
+    }
+  
   patientResponses: PatientResponses = new PatientResponses();
 
   questions: { q_no: number; question: string; }[] = [];
  
-  responses:boolean[] = []
+  responses:number[] = []
   question_ids: number[] = []
 
   objects: {responses : boolean[] ; questions_ids:number[] } [] = [];
@@ -40,6 +61,27 @@ export class DashboardComponent implements OnInit {
   sec_2 = false;
   sec_3 = false;
 
+  modalRef?: BsModalRef;
+  moodSubmitted: boolean =  false;
+
+  openModal(template: TemplateRef<any>) {
+    this.modalRef = this.modalService.show(template, {class: 'modal-md'});
+  }
+ 
+  setMood(mood:number): void {
+    console.log(mood);
+    localStorage.setItem("mood","true");
+    this.moodService.storeMood(mood).subscribe(
+      (data:any) => {
+
+        console.log('Mood Stored!',data),alert("Mood stored!")
+        // window.location.href = "dashboard"
+        this.moodSubmitted = true;
+      },
+      (error:any) => {console.log('Error storing mood!',error)}
+    )
+    this.modalRef?.hide();
+  }
 
   public section1()
   {    
@@ -134,7 +176,7 @@ export class DashboardComponent implements OnInit {
     // window.location.href = "/sections"
   }
 
-  public answer(ans : boolean,option: number)
+  public answer(ans : number,option: number)
   {
     if(option==1)
     {
@@ -188,3 +230,5 @@ export class DashboardComponent implements OnInit {
 
 
 }
+
+

@@ -23,7 +23,12 @@ import { AuthGuard } from './services/auth.guard';
 import { TasksComponent } from './components/tasks/tasks.component';
 import { MessagesComponent } from './components/messages/messages.component';
 import { Messages1Component } from './components/messages1/messages1.component';
-// import { AuthInterceptor } from './services/auth.interceptor';  ==> uncomment when you need JWT for all API calls
+import { ModalModule } from 'ngx-bootstrap/modal';
+import { ProgressComponent } from './components/progress/progress.component';
+// import { AuthInterceptor } from './services/auth.interceptor';  
+// ==> uncomment when you need JWT for all API calls
+
+
 
 @NgModule({
   declarations: [
@@ -37,7 +42,8 @@ import { Messages1Component } from './components/messages1/messages1.component';
     SectionsComponent,
     TasksComponent,
     MessagesComponent,
-    Messages1Component
+    Messages1Component,
+    ProgressComponent
   ],
   imports: [
     BrowserModule,
@@ -47,7 +53,8 @@ import { Messages1Component } from './components/messages1/messages1.component';
     FormsModule,
     MatInputModule,
     MatFormFieldModule,
-    HttpClientModule
+    HttpClientModule,
+    ModalModule.forRoot()
   ],
   // , [{provide:HTTP_INTERCEPTORS, useClass:AuthInterceptor,multi:true}]   => put this in the providers array below
   providers: [LoginService, AuthGuard],

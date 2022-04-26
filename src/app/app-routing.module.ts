@@ -7,8 +7,10 @@ import { MessagesComponent } from './components/messages/messages.component';
 import { Messages1Component } from './components/messages1/messages1.component';
 import { MoodComponent } from './components/mood/mood.component';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
+import { ProgressComponent } from './components/progress/progress.component';
 import { RegisterComponent } from './components/register/register.component';
 import { SectionsComponent } from './components/sections/sections.component';
+import { TasksComponent } from './components/tasks/tasks.component';
 import { AuthGuard } from './services/auth.guard';
 //canActivate: [AuthGuard]
 const routes: Routes = [
@@ -21,6 +23,8 @@ const routes: Routes = [
   {path : 'home' , component : HomeComponent, pathMatch : "full"},
   {path : 'messages' , component : MessagesComponent, pathMatch : "full"},
   {path : 'messages1' , component : Messages1Component, pathMatch : "full"},
+  {path : 'tasks' , component : TasksComponent, pathMatch : "full"},
+  {path : 'progress' , component : ProgressComponent, pathMatch : "full"}
 
 ];
 

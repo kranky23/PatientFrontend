@@ -1,0 +1,113 @@
+<app-nav-bar></app-nav-bar>
+
+
+
+<div class="bootstrap-wrapper">
+    <div class = "container text-center">
+
+        <section class="wrapper">
+            <!-- <nav aria-label="Page navigation example">
+              <ul class="pagination justify-content-center" >
+                <li class="page-item"><button  type="button" class="page-link" value="Hello" (click)="loadSection(1)">A</button></li>
+                <li class="page-item"><button  type="button" class="page-link" value="Hello" (click)="loadSection(1)">A</button></li>
+                <li class="page-item"><button  type="button" class="page-link" value="Hello" (click)="loadSection(1)">A</button></li>
+                <li class="page-item"><button  type="button" class="page-link" value="Hello" (click)="loadSection(1)">A</button></li>
+                <li class="page-item"><button  type="button" class="page-link" value="Hello" (click)="loadSection(1)">A</button></li>
+              </ul>
+            </nav> -->
+        </section>
+
+        <span *ngIf="one">
+            <button type="button" class="btn btn-outline-primary" (click)="loadSection(1)">Section-1</button>
+        </span>
+        <span *ngIf="two">
+            <button type="button" class="btn btn-outline-primary" (click)="loadSection(2)">Section-2</button>
+        </span>
+        <span *ngIf="three">
+            <button type="button" class="btn btn-outline-primary" (click)="loadSection(3)">Section-3</button>
+        </span>
+        <span *ngIf="four">
+            <button type="button" class="btn btn-outline-primary" (click)="loadSection(4)">Section-4</button>
+        </span>
+        <span *ngIf="five">
+            <button type="button" class="btn btn-outline-primary" (click)="loadSection(5)">Section-5</button>
+        </span>
+        <span *ngIf="six">
+            <button type="button" class="btn btn-outline-primary" (click)="loadSection(6)">Section-6</button>
+        </span>
+        <span *ngIf="seven">
+            <button type="button" class="btn btn-outline-primary" (click)="loadSection(7)">Section-7</button>
+        </span>
+        <span *ngIf="eight">
+            <button type="button" class="btn btn-outline-primary" (click)="loadSection(8)">Section-8</button>
+        </span>
+
+
+
+        <!-- <app-nav-bar></app-nav-bar> -->
+<section class="wrapper">
+
+    <html>
+
+        <head>
+          <title> Sections </title>
+        </head>
+        
+        <body>
+        
+          <div class="myClass" *ngIf="questionsLoaded">
+          <!--Q5-->
+          
+            
+
+            <br>
+            <label>{{questions[0].id}} ) {{questions[0].question}}</label>
+            <select class="form-control">
+                <option class="option">{{this.answers[0]}}</option>
+            </select>
+            <br>
+            
+            <label>{{questions[1].id}} ) {{questions[1].question}}</label>
+            <select class="form-control">
+                <option>{{this.answers[1]}}</option>
+            </select>
+            <br>
+            
+            <label>{{questions[2].id}} ) {{questions[2].question}}</label>
+            <select class="form-control">
+                <option>{{this.answers[2]}}</option>
+            </select>
+            <br>
+
+
+
+            
+            <!-- <label>{{questions[3].id}} ) {{questions[3].question}}</label>
+            <select class="form-control" #t (change)="callType(t.value)">
+              <option *ngFor="let option of options" [value]="option">{{this.option}}</option>
+            </select>
+            <br>
+
+            <label>{{questions[4].id}} ) {{questions[4].question}}</label>
+            <select class="form-control" #t (change)="callType(t.value)">
+              <option *ngFor="let option of options" [value]="option">{{this.option}}</option>
+            </select>
+            <br> -->
+
+            
+            
+          
+          </div>
+        </body>
+    </html>
+
+    
+</section>
+
+        
+
+
+
+    
+</div>
+</div>

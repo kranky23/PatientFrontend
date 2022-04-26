@@ -25,6 +25,6 @@ export class MoodService {
     )
     const options = {responseType :  'text'}
     // {headers: header}
-    return this.http.post<string>(`${this.moodUrl}/patient/mood/${mood}/${pat_id}`,{responseType : 'text'},{headers:header});
+    return this.http.post<string>(`${this.moodUrl}/patient/mood/${mood}/${pat_id}`,{responseType : 'text'});
   }
 }

@@ -3,6 +3,7 @@ import { NgForm } from '@angular/forms';
 import { Patient } from 'src/app/patient';
 import { LoginService } from 'src/app/services/login.service';
 import { RegistrationService } from 'src/app/services/register.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -11,8 +12,9 @@ import { RegistrationService } from 'src/app/services/register.service';
 })
 export class HomeComponent implements OnInit {
   
-  constructor(private loginService: LoginService, private registrationService : RegistrationService) { }
-
+  constructor(private loginService: LoginService, private registrationService : RegistrationService,
+    private router:Router) { }
+  
   login:boolean = true;
   signup: boolean = false;
 
@@ -51,9 +53,9 @@ export class HomeComponent implements OnInit {
         localStorage.setItem("email",response.email);
         localStorage.setItem("fname",response.fname);
         localStorage.setItem("lname",response.lname);
-        
+        localStorage.setItem("mood","false");
         this.loginUser(response.token)
-        window.location.href = "/mood"
+        window.location.href = "/dashboard"
         // this.router.navigate(['mood']) // this works like crazy
         
       },
@@ -63,6 +65,7 @@ export class HomeComponent implements OnInit {
 
   public loginUser(token : string)
   {
+    
     localStorage.setItem("token" ,token);
     return true;
   }

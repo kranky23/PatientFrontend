@@ -5,8 +5,10 @@
 }
 
 body {
-    background-color: cyan;
+    background-color: lightgoldenrodyellow;
     /* text-align: center; */ 
+    float:left;
+
     /* uncomment above line to get the questions to the front */
   }
   
@@ -21,7 +23,7 @@ body {
     box-sizing: border-box;
   }
   
-  div {
+  myClass {
     border-radius: 5px;
     background-color: #f2f2f2;
     padding: 20px;
@@ -48,7 +50,7 @@ body {
     border: none;
     color: white;
     padding: 15px 32px;
-    text-align: center;
+    /* text-align: center; */
     text-decoration: none;
     display: inline-block;
     font-size: 20px;
@@ -56,5 +58,11 @@ body {
     cursor: pointer;
     position: absolute;
     left: 80%;
+  }
+
+  .option
+  {
+      text-align: center;
+      text-align-last: center;
   }
   

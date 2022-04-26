@@ -20,8 +20,10 @@ export class NavBarComponent implements OnInit {
 
   public logOutUser()
   {
+    localStorage.removeItem("mood");
+    localStorage.removeItem("id");
     this.loginService.logOut();
-    window.location.href = "/"
+    window.location.href = "home"
     // this.router.navigate(['']);
     // location.reload();
   }

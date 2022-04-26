@@ -1,5 +1,63 @@
 <app-nav-bar></app-nav-bar>
 
+
+<!-- modal pop up code begins -->
+
+<div class="hey" *ngIf="!moodSubmitted">
+<button type="button" class="btn btn-danger" (click)="openModal(template)">Enter Mood</button>
+</div>
+
+<ng-template #template>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Please Enter Your Current Mood!</h4>
+    <button type="button" class="btn-close close pull-right" aria-label="Close" (click)="modalRef?.hide()">
+      <span aria-hidden="true" class="visually-hidden">&times;</span>
+    </button>
+  </div>
+
+  <div class="modal-body">
+  <div id="app">
+    <div class="mood" id="mood-great">
+      <div class="face">
+        <div class="eyes-cover">
+          <div class="eye"></div>
+          <div class="eye"></div>
+        </div>
+        <div class="mouth"></div>
+      </div>
+      <div class="mood-name"><a type="button" (click)="setMood(3)">great</a></div>
+    </div>
+    <div class="mood" id="mood-okay">
+      <div class="face">
+        <div class="eyes-cover">
+          <div class="eye"></div>
+          <div class="eye"></div>
+        </div>
+        <div class="mouth"></div>
+      </div>
+      <div class="mood-name"><a type="button" (click)="setMood(2)">neutral</a></div>
+    </div>
+    <div class="mood" id="mood-bad">
+      <div class="face">
+        <div class="eyes-cover">
+          <div class="eye"></div>
+          <div class="eye"></div>
+        </div>
+        <div class="mouth"></div>
+      </div>
+      <div class="mood-name"><a type="button" (click)="setMood(1)">sad</a></div>
+    </div>
+  </div>
+  </div>
+
+
+</ng-template>
+
+
+
+
+
+<!-- modal pop up code ends -->
 <html>
   <head>
     <title>jQuery Show/Hide text Toggle Example</title>
