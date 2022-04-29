@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ProgressAndSectionsService } from 'src/app/services/progress-and-sections.service';
 import { QuestionsService } from 'src/app/services/questions.service';
+import { ChartConfiguration, ChartEvent, ChartType } from 'chart.js';
+import * as $ from 'jquery'
+import {param} from "jquery";
 
 @Component({
   selector: 'app-progress',
@@ -21,6 +24,8 @@ export class ProgressComponent implements OnInit {
 
   questionsLoaded = false;
   map = new Map<number,string>(); 
+
+  count:number = 0;
   
 
   questions: { id: number; question: string; }[] = [];
@@ -50,10 +55,96 @@ export class ProgressComponent implements OnInit {
       },
       (error:any) => {console.log('Error obtaining current section!',error)}
     )
-  
+      this.patientProgressReturn();
   }
 
 
+  patientProgressReturn() 
+  {
+    if(this.progress==0)
+      this.count=0;
+
+      this.progressAndSectionsService.getOrderSet().subscribe(
+        (data:any) => 
+        {
+          var temp = "second";
+          console.log("JSON format order obtained is ",data);
+          console.log("progress of user is",this.progress);
+         
+          if (this.progress != 0) 
+          {
+            if (data.first == 1)
+              this.count = 1;
+  
+            if (data.second == this.progress+"")
+              this.count = 2;
+            if (data.third == this.progress+"")
+              this.count = 3;
+              if (data.fourth ==  this.progress+"")
+              this.count = 4;
+              if (data.fifth ==  this.progress+"")
+              this.count = 5;
+              if (data.sixth ==  this.progress+"")
+              this.count = 6;
+              if (data.seventh ==  this.progress+"")
+              this.count = 7;
+              if (data.eigth ==  this.progress+"")
+              this.count = 8;
+          }
+          console.log("Number of sections done are ",this.count);     
+          console.log("count is "+this.count)
+          if(this.count === 0) this.updateDonutChart('#specificChart', 0, true);
+          if(this.count === 1)  this.updateDonutChart('#specificChart', 12.50, true);
+          if(this.count === 2)  this.updateDonutChart('#specificChart', 25, true);
+          if(this.count === 3)  this.updateDonutChart('#specificChart', 37.50, true);
+          if(this.count === 4)  this.updateDonutChart('#specificChart', 50, true);
+          if(this.count === 5)  this.updateDonutChart('#specificChart', 62.50, true);
+          if(this.count === 6)  this.updateDonutChart('#specificChart', 75, true);
+          if(this.count === 7)  this.updateDonutChart('#specificChart', 87.50, true);
+          if(this.count === 8)  this.updateDonutChart('#specificChart', 100, true);
+  
+        
+        },
+        (error:any) => {console.log('Error calculating the number of sections!',error)}
+
+
+      )
+
+
+    
+  }
+
+  updateDonutChart(el: string, percent: number, donut: boolean){
+    percent = Math.round(percent);
+    if (percent > 100) {
+        percent = 100;
+    } else if (percent < 0) {
+        percent = 0;
+    }
+    var deg = Math.round(360 * (percent / 100));
+
+    if (percent > 50) {
+        $(el + ' .pie').css('clip', 'rect(auto, auto, auto, auto)');
+        $(el + ' .right-side').css('transform', 'rotate(180deg)');
+    } else {
+        $(el + ' .pie').css('clip', 'rect(0, 1em, 1em, 0.5em)');
+        $(el + ' .right-side').css('transform', 'rotate(0deg)');
+    }
+    if (donut) {
+        $(el + ' .right-side').css('border-width', '0.1em');
+        $(el + ' .left-side').css('border-width', '0.1em');
+        $(el + ' .shadow').css('border-width', '0.1em');
+    } else {
+        $(el + ' .right-side').css('border-width', '0.5em');
+        $(el + ' .left-side').css('border-width', '0.5em');
+        $(el + ' .shadow').css('border-width', '0.5em');
+    }
+    $(el + ' .num').text(percent);
+    $(el + ' .left-side').css('transform', 'rotate(' + deg + 'deg)');
+    
+  }
+
+  
   
   fetchOrder() 
   {
@@ -115,5 +206,4 @@ export class ProgressComponent implements OnInit {
     this.questionsLoaded = true;
   }
 }
-
 

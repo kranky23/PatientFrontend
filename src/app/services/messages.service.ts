@@ -25,4 +25,11 @@ export class MessagesService {
     return this.http.post<any>(`${this.baseUrl}/postMessage/${pat_id}/${1}`,messageToBeSent);
   }
 
+
+  public updateReadReceipt()
+  {
+    var pat_id = localStorage.getItem("id")!;
+    return this.http.post<any>(`${this.baseUrl}/updateReadReceipt/${pat_id}`,true);
+  }
+
 }

@@ -1,11 +1,29 @@
 <app-nav-bar></app-nav-bar>
 
-
+<section class="wrapper">
 <!-- modal pop up code begins -->
 
-<div class="hey" *ngIf="!moodSubmitted">
+<div class="hey" *ngIf="!moodSubmitted" >
 <button type="button" class="btn btn-danger" (click)="openModal(template)">Enter Mood</button>
 </div>
+
+
+
+
+
+
+
+
+<!-- below is the consent button! -->
+<button type="button" class="btn btn-info" >Give Consent</button>
+<!-- above is the consent button -->
+
+
+
+
+
+
+
 
 <ng-template #template>
   <div class="modal-header">
@@ -64,15 +82,35 @@
   </head>
   <body class="con">
     <span class="show-text">
-      Bonbon bonbon gummi bears pudding. Dessert chupa chups macaroon cookie muffin dessert. Toffee powder candy canes tart lollipop brownie marshmallow chocolate bar. Fruitcake danish sesame snaps biscuit sesame snaps apple pie. Bear claw jelly-o dragée chocolate. Bonbon topping chocolate bar. Dessert chocolate bar pastry tiramisu. Gummi bears gummies brownie jujubes sesame snaps croissant danish. Gummies danish oat cake caramels cotton candy pastry fruitcake sweet. Topping gingerbread biscuit halvah cupcake candy canes sesame snaps.
+      Everyone feels sad or low sometimes, but these feelings usually pass with a little time. 
+      Depression (also called major depressive disorder or clinical depression) is different. 
+      It can cause severe symptoms that affect how you feel, think, and handle daily activities, such as sleeping, eating, or working.
+      It is an illness that can affect anyone—regardless of age, race, income, culture, or education. 
+      Research suggests that genetic, biological, environmental, and psychological factors play a role in depression.
     </span>
     <br><br>
     <span class="show-text">
-      Biscuit brownie powder gummies macaroon cupcake cupcake gummies. Macaroon chocolate cake jelly beans pie gummies sweet macaroon. Brownie chocolate bar brownie chocolate bar sweet roll. Marzipan caramels halvah jelly beans cheesecake muffin pie halvah marzipan. Bonbon caramels tootsie roll pudding cupcake. Lollipop sesame snaps lollipop soufflé jelly beans powder sweet ice cream chocolate cake. Biscuit lollipop biscuit bear claw. Gummies caramels danish wafer. Icing chocolate caramels donut. Chupa chups candy canes bonbon chocolate cake chocolate cake. Fruitcake fruitcake tiramisu. Ice cream sugar plum halvah donut halvah tiramisu cake candy. Bonbon chupa chups dragée sesame snaps oat cake.
-    </span>
+      Depression may occur with other mental disorders and other illnesses, such as diabetes, cancer, heart disease, and chronic pain.
+      Depression can make these conditions worse, and vice versa. 
+      Sometimes medications taken for these illnesses cause side effects that contribute to depression symptoms.
+      </span>
     <br><br>
     <span class="show-text">
-Tart cookie dragée jelly-o tootsie roll lemon drops. Oat cake tart icing oat cake dragée tiramisu gummies caramels muffin. Chupa chups apple pie toffee marzipan ice cream soufflé gummies. Bonbon gummies caramels pie carrot cake. Carrot cake sweet roll soufflé croissant jujubes brownie. Jelly-o gummies cake gingerbread sesame snaps apple pie chocolate fruitcake. Danish tiramisu cake chocolate carrot cake tootsie roll.
-    </span>
+      To be diagnosed with depression, an individual must have five depression symptoms every day, nearly all day, for at least 2 weeks. One of the symptoms must be a depressed mood or a loss of interest or pleasure in almost all activities. 
+      Children and adolescents may be irritable rather than sad.
+
+      If you think you may have depression, talk to your health care provider. 
+      Primary care providers routinely diagnose and treat depression and refer individuals to mental health professionals, such as psychologists or psychiatrists.</span>
+
+      <br>
+      <!-- <br> -->
+      <section style="text-align: center;">
+        <button type="button"  class="btn btn-outline-success" (click)="bored()">Click to kill boredom!</button>
+        <br><br>
+        <h3>{{this.activity}}</h3>
+      </section>
   </body>
+  
 </html>
+
+</section>

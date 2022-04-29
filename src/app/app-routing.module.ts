@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AdminComponent } from './components/admin/admin.component';
+import { AdminloginComponent } from './components/adminlogin/adminlogin.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
@@ -18,13 +20,16 @@ const routes: Routes = [
   {path : 'mood' , component : MoodComponent , pathMatch : "full"} ,
   {path : 'dashboard' , component : DashboardComponent , pathMatch : "full"} ,
   {path : 'navbar' , component : NavBarComponent , pathMatch : "full"} ,
-  {path : 'register' , component : RegisterComponent , pathMatch : "full"}  ,
+  {path : 'register' , component : RegisterComponent }  ,
   {path : 'sections' , component : SectionsComponent, pathMatch : "full"},
-  {path : 'home' , component : HomeComponent, pathMatch : "full"},
+  {path : 'home', children: [{path:'**', component:HomeComponent}]},
   {path : 'messages' , component : MessagesComponent, pathMatch : "full"},
   {path : 'messages1' , component : Messages1Component, pathMatch : "full"},
   {path : 'tasks' , component : TasksComponent, pathMatch : "full"},
-  {path : 'progress' , component : ProgressComponent, pathMatch : "full"}
+  {path : 'progress' , component : ProgressComponent, pathMatch : "full"},
+  {path : 'adminlogin' , component : AdminloginComponent, pathMatch : "full"},
+  {path : 'adminhome' , component : AdminComponent, pathMatch : "full"},
+  {path : '' , component : HomeComponent, pathMatch : "full"},
 
 ];
 

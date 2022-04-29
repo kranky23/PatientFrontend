@@ -15,6 +15,7 @@ import { HomeComponent } from './components/home/home.component';
 import { MatFormFieldModule} from '@angular/material/form-field';
 import { MatInputModule} from '@angular/material/input';
 import { FormsModule } from '@angular/forms';
+import { NgChartsModule } from 'ng2-charts';
   
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { SectionsComponent } from './components/sections/sections.component';
@@ -25,6 +26,8 @@ import { MessagesComponent } from './components/messages/messages.component';
 import { Messages1Component } from './components/messages1/messages1.component';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { ProgressComponent } from './components/progress/progress.component';
+import { AdminComponent } from './components/admin/admin.component';
+import { AdminloginComponent } from './components/adminlogin/adminlogin.component';
 // import { AuthInterceptor } from './services/auth.interceptor';  
 // ==> uncomment when you need JWT for all API calls
 
@@ -43,12 +46,15 @@ import { ProgressComponent } from './components/progress/progress.component';
     TasksComponent,
     MessagesComponent,
     Messages1Component,
-    ProgressComponent
+    ProgressComponent,
+    AdminComponent,
+    AdminloginComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    NgChartsModule,
     MatToolbarModule,
     FormsModule,
     MatInputModule,

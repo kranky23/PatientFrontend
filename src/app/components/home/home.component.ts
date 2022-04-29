@@ -15,12 +15,26 @@ export class HomeComponent implements OnInit {
   constructor(private loginService: LoginService, private registrationService : RegistrationService,
     private router:Router) { }
   
-  login:boolean = true;
-  signup: boolean = false;
+  login:boolean = false;
+  signup: boolean = true;
+  link: string = "";
+  docId: string = "";
 
   patient: Patient = new Patient();
 
   ngOnInit(): void {
+    this.link = this.router.url;
+    console.log(this.link);
+    var splitted = this.link.split("=");
+    console.log(splitted);
+
+    if(splitted.length>1){
+      var arr = splitted[1].split(":");
+      console.log(arr)
+      this.docId = arr[0]
+      this.patient.email = arr[1];
+      this.patient.firstName = arr[2];
+    }
   }
 
   activateLogin()
@@ -76,7 +90,7 @@ export class HomeComponent implements OnInit {
   public onSubmit(patientSignUp : NgForm)
   {
     console.log(this.patient);
-    this.registrationService.enroll(this.patient)
+    this.registrationService.enroll(this.patient,this.docId)
     .subscribe(
       (data:any) => {
 

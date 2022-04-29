@@ -38,13 +38,13 @@
     <!-- Register form -->
     <form class="email-signup" *ngIf="signup" #patientSignUp="ngForm"  (ngSubmit)="onSubmit(patientSignUp)" >
       <div class="u-form-group">
-        <input type="email" id="floatingPassword" placeholder="First Name"[(ngModel)]="patient.firstName" name="firstName" />
+        <input type="email" id="floatingPassword" disabled="true" placeholder="First Name"[(ngModel)]="patient.firstName" name="firstName" />
       </div>
       <div class="u-form-group">
         <input type="email" id="floatingPassword" placeholder="Last Name"[(ngModel)]="patient.lastName" name="lastName" />
       </div>
       <div class="u-form-group">
-        <input type="email" id="floatingPassword" placeholder="Email"[(ngModel)]="patient.email" name="email" />
+        <input type="email" id="floatingPassword" disabled="true" placeholder="Email"[(ngModel)]="patient.email" name="email" />
       </div>
       <div class="u-form-group">
         <input type="password" id="floatingPassword" placeholder="Password" [(ngModel)]="patient.password" name="password" />

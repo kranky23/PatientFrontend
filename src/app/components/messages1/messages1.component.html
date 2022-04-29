@@ -5,11 +5,9 @@
         
         <div class="chat">
           <div class="chat-header clearfix">
-            <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/chat_avatar_01_green.jpg" alt="avatar" />
             
             <div class="chat-about">
-              <div class="chat-with">Chat with Vincent Porter</div>
-              <div class="chat-num-messages">already 1 902 messages</div>
+              <div class="chat-with">Chat </div>
             </div>
             <i class="fa fa-star"></i>
           </div> <!-- end chat-header -->
@@ -25,6 +23,12 @@
                 </div>
                 <div class="message other-message float-right align-right">
                   {{message.message}}
+                  <span class="message-data-lastseen" *ngIf="!message.readReceipt">
+                    <img src="https://img.icons8.com/glyph-neue/20/ffffff/double-tick.png"/>
+                  </span>
+                  <span class="message-data-lastseen" *ngIf="message.readReceipt">
+                    <img src="https://img.icons8.com/glyph-neue/20/4a90e2/double-tick.png"/>
+                  </span>
                 </div>
 
             </div>
@@ -35,6 +39,7 @@
                 <div class="message-data">
                   <span class="message-data-name"><i class="fa fa-circle online"></i> Doctor</span>
                   <span class="message-data-time">{{message.time}}</span>
+                  
                 </div>
                 <div class="message my-message" >
                   {{message.message}}
@@ -78,14 +83,15 @@
           </div> <!-- end chat-history -->
           
           <div class="chat-message clearfix">
-            <textarea  class="comment" type="text" 
+            <textarea  class="comment" type="text"
             name="message-to-send" id="message-to-send" placeholder ="Type your message" rows="3" [(ngModel)]="messageToBeSent.message">
         </textarea>
                     
             <i class="fa fa-file-o"></i> &nbsp;&nbsp;&nbsp;
             <i class="fa fa-file-image-o"></i>
             
-            <button class="button insert" type="button" (click)="onSendMessage(messageToBeSent)">Send Message</button>
+            <button class="button insert" type="button" [disabled]="!messageToBeSent.message" (click)="onSendMessage(messageToBeSent)">Send Message</button>
+            <button class="button insert" type="button" (click)="loadNewMessages()">Load New Messages!</button>
     
           </div> <!-- end chat-message -->
           

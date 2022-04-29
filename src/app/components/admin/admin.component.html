@@ -1,0 +1,86 @@
+
+<html>
+    <body>
+      <div class="container crud-table">
+        <div class="clearfix">
+
+          <div class="form-inline pull-right">
+            <button type="button" class="btn btn-danger" (click)="logOutUser()">
+              <span class="glyphicon glyphicon-plus"> </span>
+              Logout
+            </button>
+          </div>
+
+          <div class="form-inline pull-left">
+            <button type="button" class="btn btn-success" (click)="showDoctors()"><span class="glyphicon glyphicon-plus"> </span>View doctors</button>
+            <!-- <button type="button" class="btn btn-warning" (click)="showSpecialists()"><span class="glyphicon glyphicon-plus"> </span>Add Specialist</button> -->
+          </div>
+          
+        </div>
+        <table class="table table-striped" *ngIf = "this.doctorsLoaded">
+          <thead>
+            <tr>
+              <th >Username</th>
+              <th >First Name</th>
+              <th>Last Name</th>
+            </tr>
+          </thead>
+          <tbody class="text-center" >
+            <tr *ngFor="let doctor of doctors">
+              <td>{{ doctor.username }}</td>
+              <td>{{ doctor.fname }}</td>
+              <td>{{ doctor.lname }}</td>
+              <!-- <td> -->
+                <!-- <button class="btn btn-primary" (click)="editUser(doctor)">Edit</button> -->
+              <!-- </td> -->
+              <!-- <td> 
+                <button class="btn btn-danger" (click)="deleteUser(doctor)">Delete</button>
+              </td> -->
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="form-inline pull-left">
+          <button type="button" class="btn btn-success" (click)="addUser()"><span class="glyphicon glyphicon-plus"> </span>Add doctor</button>
+          <!-- <button type="button" class="btn btn-warning" (click)="addSpecialist()"><span class="glyphicon glyphicon-plus"> </span>Add Specialist</button> -->
+        </div>
+
+
+        <div class = "container-fluid mb-5" *ngIf="addDoctor">
+            <h3> doctor add Form</h3>
+            <form #gamerAdd="ngForm" (ngSubmit)="onAdd(gamerAdd)" >
+
+    
+
+        <!-- <pre>{{ doctor | json }}</pre> -->
+        
+
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" [(ngModel)]="doctor.fname" id="floatingInput" placeholder="name@example.com" name="email">
+                    <label for="floatingInput">First Name</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" [(ngModel)]="doctor.lname" id="floatingInput" placeholder="name@example.com" name="email">
+                    <label for="floatingInput">Last Name</label>
+                </div>
+
+                  <div class="form-floating mb-3">
+                    <input type="text" class="form-control" [(ngModel)]="doctor.username" id="floatingInput" placeholder="name@example.com" name="email">
+                    <label for="floatingInput">Username</label>
+                  </div>
+        
+                  <div class="form-floating mb-3">
+                    <input type="password" class="form-control" [(ngModel)]="doctor.password" id="floatingPassword" placeholder="Password" name="password">
+                    <label for="floatingPassword">Password</label>
+                  </div>
+        
+                    <div class="col-12">
+                    <button type="submit" class="btn btn-primary">Add doctor to database!</button>
+                  </div>
+            </form>
+        </div>
+
+
+      </div>
+    </body>
+  </html>

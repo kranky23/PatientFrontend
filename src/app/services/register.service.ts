@@ -13,8 +13,8 @@ export class RegistrationService {
 
   constructor(private http: HttpClient) { }
 
-  enroll(patient: Patient)
+  enroll(patient: Patient,docId:any)
   {
-    return this.http.post<any>(this.registrationUrl,patient);
+    return this.http.post<any>(`${this.registrationUrl}/${docId}`,patient);
   }
 }

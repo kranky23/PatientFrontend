@@ -9,7 +9,7 @@ export class MoodService {
 
   constructor(private http: HttpClient) { }
 
-  moodUrl = 'http://localhost:8080';
+  baseUrl = 'http://localhost:8080';
 
   storeMood(mood: Number) : Observable<string>
   {
@@ -25,6 +25,12 @@ export class MoodService {
     )
     const options = {responseType :  'text'}
     // {headers: header}
-    return this.http.post<string>(`${this.moodUrl}/patient/mood/${mood}/${pat_id}`,{responseType : 'text'});
+    return this.http.post<string>(`${this.baseUrl}/patient/mood/${mood}/${pat_id}`,{responseType : 'text'});
   }
+
+  getBored()
+  {
+    return this.http.get(`http://www.boredapi.com/api/activity/`);
+  }
+
 }

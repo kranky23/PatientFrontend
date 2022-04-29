@@ -1,0 +1,16 @@
+<div class="login-box">
+    <div class="lb-header">
+    <a type="button" id="login-box-link">Admin Login</a>
+    <form class="email-login"  #patientLogin="ngForm" (ngSubmit)="onLogin(patientLogin)">
+        <div class="u-form-group">
+          <input type="email" placeholder="Username" [(ngModel)]="admin.username" name="email" />
+        </div>
+        <div class="u-form-group">
+          <input type="password" placeholder="Password" [(ngModel)]="admin.password" name="password"/>
+        </div>
+        <div class="u-form-group">
+          <button type="submit">Log in</button>
+        </div>
+      </form>
+    </div>
+</div>

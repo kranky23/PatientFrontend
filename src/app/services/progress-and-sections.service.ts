@@ -53,6 +53,6 @@ export class ProgressAndSectionsService {
   getResponses(sec_id:number)
   {
     const pat_id = localStorage.getItem("id");
-    return this.http.get(`${this.baseUrl}/getPatientReesponses/${pat_id}/${sec_id}`);
+    return this.http.get(`${this.baseUrl}/getPatientResponses/${pat_id}/${sec_id}`);
   }
 }

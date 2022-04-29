@@ -20,7 +20,7 @@ export class RegisterComponent implements OnInit {
   public onSubmit(patientSignUp : NgForm)
   {
     console.log(this.patient);
-    this.registrationService.enroll(this.patient)
+    this.registrationService.enroll(this.patient,1)
     .subscribe(
       (data:any) => {
 

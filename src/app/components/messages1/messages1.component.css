@@ -118,7 +118,7 @@ body {
   font-size: 16px;
   border-radius: 7px;
   margin-bottom: 30px;
-  width: 90%;
+  width: 45%;
   position: relative;
 }
 .chat .chat-history .message:after {

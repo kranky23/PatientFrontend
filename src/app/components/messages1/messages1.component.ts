@@ -16,8 +16,11 @@ export class Messages1Component implements OnInit {
 
   messageToBeSent : Messages = new Messages();
   
-  ngOnInit(): void 
+  async ngOnInit(): Promise<void> 
   {
+    const data : any = await this.messageService.updateReadReceipt().toPromise();
+
+    
     var pat_id = localStorage.getItem("id");
     this.messageService.getMessages(pat_id!).subscribe(
       (data:any) => {
@@ -40,7 +43,7 @@ export class Messages1Component implements OnInit {
     this.messageService.sendMessage(messageToBeSent).subscribe(
       (data:any) => {
         console.log("Message successfully stored!",data);
-        messageToBeSent.message = "";
+        messageToBeSent.message = null!;
         // window.scrollTo(0, document.body.scrollHeight);
 
         this.ngOnInit();
@@ -48,6 +51,12 @@ export class Messages1Component implements OnInit {
       (error:any) => {console.log('Could not store message!',error)}
     )
    
+  }
+
+  loadNewMessages()
+  {
+
+    this.ngOnInit();
   }
 
 

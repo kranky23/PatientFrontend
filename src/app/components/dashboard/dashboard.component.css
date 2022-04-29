@@ -1,3 +1,9 @@
+.wrapper {
+	margin-left: 250px;
+	transition: all .3s ease-in-out;
+  /* background-color: var(--dk-dark-bg); */
+}
+
 .questions
 {
     margin-top: 30px;
@@ -8,10 +14,10 @@
 .con {
     background-color: #fffeee;
     color: #918D91;
-    width: 50%;
+    width: 80%;
     margin: 2% auto;
-/*     font-family: 'Sofia'; */
-    font-size: 1.2em;
+    font-family: 'Sofia';
+    font-size: 1.5em;
 }
 
 .morecontent span {

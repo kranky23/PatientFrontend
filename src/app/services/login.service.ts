@@ -1,12 +1,15 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { Admin } from '../admin';
+import { Doctor } from '../doctor';
 import { Patient } from '../patient';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LoginService {
+ 
 
   constructor(private router: Router,private http : HttpClient) { }
 
@@ -38,5 +41,22 @@ export class LoginService {
     {
       return localStorage.getItem("token");
     }
+
+    public adminLogin(admin:Admin)
+    {
+      return this.http.post(`${this.url}/adminLogin`,admin);
+    }
+
+    getDoctors() {
+      return this.http.get<any>(`${this.url}/getDoctors`,{
+        headers: {
+            'Content-Type': 'application/json'
+        },})
+    }
+
+  addDoctor(doctor: Doctor)
+  {
+    return this.http.post(`${this.url}/addDoctor`,doctor);
+  }
 
 }
