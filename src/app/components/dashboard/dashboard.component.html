@@ -15,13 +15,32 @@
 
 
 <!-- below is the consent button! -->
-<button type="button" class="btn btn-info" >Give Consent</button>
+<div color="red" *ngIf="isConsent.match('0')" style="color:rgb(55, 0, 255)">No Permissions</div>
+<div color="red" *ngIf="isConsent.match('1')" style="color:red">Permission from {{consentDetails.fname}} {{consentDetails.lname}}</div>
+<div color="red" *ngIf="isConsent.match('2')" style="color:green">You Granted Permission To {{consentDetails.fname}} {{consentDetails.lname}}</div>
+<div color="red" *ngIf="isConsent.match('3')" style="color:red">Permission Rejected for {{consentDetails.fname}} {{consentDetails.lname}}</div>
+<button type="button" class="btn btn-info" [disabled]="isConsent.match('0')"(click)="grantPermission()"><div *ngIf="!isConsent.match('2')">Give</div><div *ngIf="isConsent.match('2')">Revoke</div> Consent</button>
 <!-- above is the consent button -->
 
+<!--******************************** Modal STARTS HERE********************************* -->
+<!--Modal class for Specialist Order-->
+<!-- <div class="modal fade" data-backdrop="false" id="modalSpecialistForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+     aria-hidden="true" >
+  <div class="modal-dialog" role="document" style="margin-left:28%">
+    <div class="modal-content" style="width:750px;">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Consent</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
 
-
-
-
+      <div class="modal-footer d-flex justify-content-center">
+      </div>
+    </div>
+  </div>
+</div> -->
+<!-- ****************************Modal ENDS HERE ********************************** -->
 
 
 

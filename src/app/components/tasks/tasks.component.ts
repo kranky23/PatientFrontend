@@ -63,7 +63,7 @@ checkProgress()
       {
         var index = 0;
         this.order[0]=data.first; this.order[1]= data.second; this.order[2]=data.third; this.order[3]=data.fourth;
-        this.order[4]=data.fifth; this.order[5]=data.sixth; this.order[6]=data.seventh; this.order[7]=data.eigth;
+        this.order[4]=data.fifth; this.order[5]=data.sixth; this.order[6]=data.seventh; this.order[7]=data.eight;
         // delete this.order[4];
 
         if(this.order[4]==undefined)

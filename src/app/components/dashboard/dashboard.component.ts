@@ -27,14 +27,45 @@ export class DashboardComponent implements OnInit {
 
   template!: TemplateRef<any>;
   templateLoad: boolean = false;
+  isConsent: string="0";
+  consentDetails={
+    fname:"",
+    lname:""
+  }
   ngOnInit(): void {
     if (localStorage.getItem("mood") == "false")
       this.moodSubmitted = false;
     else {
       this.moodSubmitted = true;
     }
+    
+    this.storeResponseService.getConsent(localStorage.getItem("id")||"")
+    .subscribe(
+      (data:any)=>{
+        this.isConsent = data.count;
+        this.consentDetails.fname = data.fname;
+        this.consentDetails.lname = data.lname;
+      },
+      error=>{
+        console.log(error)
+      }
+    )
+
   }
 
+  grantPermission(){
+    this.storeResponseService.grantPermission(localStorage.getItem('id')||'', this.isConsent).subscribe(
+      (data:any)=>{
+        this.isConsent = data.count;
+        this.consentDetails.fname = data.fname;
+        this.consentDetails.lname = data.lname;
+      },
+      error=>{
+        console.log(error);
+      }
+      
+    )
+  }
   modalRef?: BsModalRef;
   moodSubmitted: boolean = false;
 

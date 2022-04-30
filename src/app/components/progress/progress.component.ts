@@ -24,8 +24,11 @@ export class ProgressComponent implements OnInit {
 
   questionsLoaded = false;
   map = new Map<number,string>(); 
+  map1 = new Map<number,string>(); 
 
   count:number = 0;
+
+  order:any[] = []; //order of the sections a patient has completed.
   
 
   questions: { id: number; question: string; }[] = [];
@@ -88,7 +91,7 @@ export class ProgressComponent implements OnInit {
               this.count = 6;
               if (data.seventh ==  this.progress+"")
               this.count = 7;
-              if (data.eigth ==  this.progress+"")
+              if (data.eight ==  this.progress+"")
               this.count = 8;
           }
           console.log("Number of sections done are ",this.count);     
@@ -149,7 +152,7 @@ export class ProgressComponent implements OnInit {
   fetchOrder() 
   {
     this.progressAndSectionsService.getOrderSet().subscribe(
-      (data:any) => 
+      async (data:any) => 
       {
         var temp = "second";
         console.log("JSON format order obtained is ",data);
@@ -157,23 +160,103 @@ export class ProgressComponent implements OnInit {
        
         if (this.progress != 0) 
         {
-          if (data.first == 1)
-            this.one = true;
 
-          if (data.second == 2 || data.third == 2 || data.fourth == 2 || data.fifth == 2 || data.sixth == 2 || data.seventh == 2 || data.eigth == 2)
-            this.two = true;
-          if (data.second == 3 || data.third == 3 || data.fourth == 3 || data.fifth == 3 || data.sixth == 3 || data.seventh == 3 || data.eigth == 3)
-            this.three = true;
-          if (data.second == 4 || data.third == 4 || data.fourth == 4 || data.fifth == 4 || data.sixth == 4 || data.seventh == 4 || data.eigth == 4)
-            this.four = true;
-          if (data.second == 5 || data.third == 5 || data.fourth == 5 || data.fifth == 5 || data.sixth == 5 || data.seventh == 5 || data.eigth == 5)
-            this.five = true;
-          if (data.second == 6 || data.third == 6 || data.fourth == 6 || data.fifth == 6 || data.sixth == 6 || data.seventh == 6 || data.eigth == 6)
-            this.six = true;
-          if (data.second == 7 || data.third == 7 || data.fourth == 7 || data.fifth == 7 || data.sixth == 7 || data.seventh == 7 || data.eigth == 7)
-            this.seven = true;
-          if (data.second == 8 || data.third == 8 || data.fourth == 8 || data.fifth == 8 || data.sixth == 8 || data.seventh == 8 || data.eigth == 8)
-            this.eight = true;
+          // if(data.first!=this.progress)
+          //   this.one = true;
+          // else
+          //   return;
+          
+          // if(data.second!=this.progress)
+          //   this.two = true;
+          // else 
+          // {
+          //   this.two = true;
+          //   return;
+          // }
+          
+          const data : any = await this.progressAndSectionsService.getOrderSet().toPromise();
+          // this.progressAndSectionsService.getOrderSet().subscribe(
+          //   (data:any) => 
+          //   {
+              var temp = "second";
+              console.log("JSON format order obtained is ",data);
+              console.log("progress of user is",this.progress);
+                var index = 0;
+                this.order[0]=data.first; this.order[1]= data.second; this.order[2]=data.third; this.order[3]=data.fourth;
+                this.order[4]=data.fifth; this.order[5]=data.sixth; this.order[6]=data.seventh; this.order[7]=data.eight;
+            //   },
+            //   (error:any) => {console.log('Error obtaining progress set orders!',error)}
+            // )
+
+            console.log("orders array is ", this.order);
+
+            // if(this.progress==1 && this.progress!=-1)
+            // {
+            //   this.one = true;
+            //   return;
+            // }
+
+            for(var i=0;i<8;i++)
+            {
+              if(this.order[i]==1)
+                this.one = true;
+              else if(this.order[i]==2)
+                this.two = true;
+              else if (this.order[i] == 3)
+                this.three = true;
+              else if (this.order[i] == 4)
+                this.four = true;
+              else if (this.order[i] == 5)
+                this.five = true;
+              else if (this.order[i] == 6)
+                this.six = true;
+              else if (this.order[i] == 7)
+                this.seven = true;
+              else if (this.order[i] == 8)
+                this.eight = true;
+              
+              if(this.order[i]==this.progress)
+                return;
+            }
+
+
+
+
+
+
+
+
+
+
+
+
+          
+
+            if (data.first == 1)
+            {
+              this.one = true;
+              if(data.first==this.progress)
+                return;
+            }
+
+            if (data.second == 2 || data.third == 2 || data.fourth == 2 || data.fifth == 2 || data.sixth == 2 || data.seventh == 2 || data.eight == 2)
+              this.two = true;
+            if (data.second == 3 || data.third == 3 || data.fourth == 3 || data.fifth == 3 || data.sixth == 3 || data.seventh == 3 || data.eight == 3)
+              this.three = true;
+            if (data.second == 4 || data.third == 4 || data.fourth == 4 || data.fifth == 4 || data.sixth == 4 || data.seventh == 4 || data.eight == 4)
+              this.four = true;
+            if (data.second == 5 || data.third == 5 || data.fourth == 5 || data.fifth == 5 || data.sixth == 5 || data.seventh == 5 || data.eight == 5)
+            {
+              this.five = true;
+              // if(data.second==this.progress || data.third==this.progress || data.fourth==this.progress || data.fifth==this.progress || data.sixth==this.progress || data.seventh==this.progress || data.eight==this.progress)
+              //   return;
+            }
+            if (data.second == 6 || data.third == 6 || data.fourth == 6 || data.fifth == 6 || data.sixth == 6 || data.seventh == 6 || data.eight == 6)
+              this.six = true;
+            if (data.second == 7 || data.third == 7 || data.fourth == 7 || data.fifth == 7 || data.sixth == 7 || data.seventh == 7 || data.eight == 7)
+              this.seven = true;
+            if (data.second == 8 || data.third == 8 || data.fourth == 8 || data.fifth == 8 || data.sixth == 8 || data.seventh == 8 || data.eight == 8)
+              this.eight = true;
         }
 
       

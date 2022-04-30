@@ -46,10 +46,14 @@
             <select class="form-control" #t (change)="callType(t.value)">
               <option *ngFor="let option of options" [value]="option">{{this.option}}</option>
             </select>
-            <br> -->
+            <br> && responses[1]!=null && responses[2]!=null -->
 
+            <button class="btn" type="submit" [disabled]="!(responses[0]&&responses[1]&&responses[2])" 
             
-            <input type="submit" name="submit" value="Submit" (click)="onSubmit()">
+             name="submit" value="Submit" (click)="onSubmit()">Submit</button>
+
+        
+           
           </form>
           </div>
         </body>

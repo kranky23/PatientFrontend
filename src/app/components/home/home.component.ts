@@ -49,7 +49,7 @@ export class HomeComponent implements OnInit {
     this.login = false;
     this.signup = true;
   }
-
+  // isloggedIn : boolean = true
   // login function
   public onLogin(patientLogin : NgForm)
   {
@@ -73,7 +73,7 @@ export class HomeComponent implements OnInit {
         // this.router.navigate(['mood']) // this works like crazy
         
       },
-      error=>{ console.log(error)}
+      error=>{ console.log(error),alert("Wrong credentials!")}
     );
   }
 

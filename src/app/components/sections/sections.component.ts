@@ -11,6 +11,7 @@ import { DashboardComponent } from '../dashboard/dashboard.component';
 })
 export class SectionsComponent implements OnInit {
 
+  isEnabled:boolean = true
   question_ids: number[] = [];
   responses:number[] = [];
   questions: { id: number; question: string; }[] = [];
@@ -27,7 +28,7 @@ export class SectionsComponent implements OnInit {
       fifth:"0",
       sixth:"0",
       seventh:"0",
-      eigth:"0"
+      eight:"0"
       }
   patientResponses: PatientResponses = new PatientResponses();
 
@@ -108,7 +109,7 @@ export class SectionsComponent implements OnInit {
           this.credentials = res;
           console.log("credentials sveneom is ",res);
           if(res.first==sec_id+"" || res.second==sec_id+"" || res.third==sec_id+"" || res.fourth==sec_id+"" ||
-          res.fifth==sec_id+"" || res.sixth==sec_id+"" || res.seventh==sec_id+"" || res.eigth==sec_id+"")
+          res.fifth==sec_id+"" || res.sixth==sec_id+"" || res.seventh==sec_id+"" || res.eight==sec_id+"")
             {
               console.log("mandatory section completed!",res)
               window.location.href = "tasks"
@@ -150,9 +151,9 @@ export class SectionsComponent implements OnInit {
             this.credentials.seventh=sec_id+"";
             // return;
           }
-          else if(res.eigth=="0")
+          else if(res.eight=="0")
           {
-            this.credentials.eigth=sec_id+"";
+            this.credentials.eight=sec_id+"";
             // return;
           }
           console.log("updated order set after the completion of section is ",this.credentials);
@@ -184,6 +185,7 @@ export class SectionsComponent implements OnInit {
   pa(value: any){
     console.log("1st question answer is " ,value);
     this.responses[0] = this.map.get(value)!;
+    
   }
 
   qa(value: any){

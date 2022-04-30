@@ -7,5 +7,5 @@ export class OrderSet {
     public fifth!: string;
     public sixth!: string;
     public seventh!: string;
-    public eigth!: string;
+    public eight!: string;
 }

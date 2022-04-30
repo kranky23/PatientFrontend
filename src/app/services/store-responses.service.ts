@@ -20,4 +20,12 @@ export class StoreResponsesService {
     return this.http.post(`${this.baseUrl}/patient/responses/${pat_id}/${sec_id}`,patientRespones);
   }
 
+  getConsent(pat_id:string){
+    return this.http.get(`${this.baseUrl}/consent/${pat_id}`);
+  }
+
+  grantPermission(pat_id:string, isConsent:string){
+    return this.http.get(`${this.baseUrl}/provideConsent/${pat_id}/${isConsent}`);
+  }
+
 }

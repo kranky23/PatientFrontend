@@ -13,10 +13,11 @@
 
           <div class="form-inline pull-left">
             <button type="button" class="btn btn-success" (click)="showDoctors()"><span class="glyphicon glyphicon-plus"> </span>View doctors</button>
-            <!-- <button type="button" class="btn btn-warning" (click)="showSpecialists()"><span class="glyphicon glyphicon-plus"> </span>Add Specialist</button> -->
+            <button type="button" class="btn btn-warning" (click)="showSpecialists()"><span class="glyphicon glyphicon-plus"> </span>View Specialists</button>
           </div>
           
         </div>
+        <!-- Doctor view table -->
         <table class="table table-striped" *ngIf = "this.doctorsLoaded">
           <thead>
             <tr>
@@ -40,20 +41,41 @@
           </tbody>
         </table>
 
+        <!-- Specialist view form -->
+        <table class="table table-striped" *ngIf = "this.specialistsLoaded">
+          <thead>
+            <tr>
+              <th >Email</th>
+              <th >First Name</th>
+              <th>Last Name</th>
+            </tr>
+          </thead>
+          <tbody class="text-center" >
+            <tr *ngFor="let specialist of specialists">
+              <td>{{ specialist.email }}</td>
+              <td>{{ specialist.fname }}</td>
+              <td>{{ specialist.lname }}</td>
+              <!-- <td> -->
+                <!-- <button class="btn btn-primary" (click)="editUser(doctor)">Edit</button> -->
+              <!-- </td> -->
+              <!-- <td> 
+                <button class="btn btn-danger" (click)="deleteUser(doctor)">Delete</button>
+              </td> -->
+            </tr>
+          </tbody>
+        </table>
+
         <div class="form-inline pull-left">
-          <button type="button" class="btn btn-success" (click)="addUser()"><span class="glyphicon glyphicon-plus"> </span>Add doctor</button>
-          <!-- <button type="button" class="btn btn-warning" (click)="addSpecialist()"><span class="glyphicon glyphicon-plus"> </span>Add Specialist</button> -->
+          <button type="button" class="btn btn-success" (click)="insertDoctor()"><span class="glyphicon glyphicon-plus"> </span>Add doctor</button>
+          <button type="button" class="btn btn-warning" (click)="insertSpecialist()"><span class="glyphicon glyphicon-plus"> </span>Add Specialist</button>
         </div>
 
 
         <div class = "container-fluid mb-5" *ngIf="addDoctor">
             <h3> doctor add Form</h3>
-            <form #gamerAdd="ngForm" (ngSubmit)="onAdd(gamerAdd)" >
-
-    
+            <form #doctorAdd="ngForm" (ngSubmit)="onAdd(doctorAdd)" >
 
         <!-- <pre>{{ doctor | json }}</pre> -->
-        
 
                 <div class="form-floating mb-3">
                     <input type="text" class="form-control" [(ngModel)]="doctor.fname" id="floatingInput" placeholder="name@example.com" name="email">
@@ -80,6 +102,36 @@
             </form>
         </div>
 
+        <div class = "container-fluid mb-5" *ngIf="addSpecialist">
+          <h3> Specialist add Form</h3>
+          <form #specialistAdd="ngForm" (ngSubmit)="onAddSpecialist(specialistAdd)" >
+
+      <!-- <pre>{{ doctor | json }}</pre> -->
+
+              <div class="form-floating mb-3">
+                  <input type="text" class="form-control" [(ngModel)]="specialist.fname" id="floatingInput" placeholder="name@example.com" name="email">
+                  <label for="floatingInput">First Name</label>
+              </div>
+              <div class="form-floating mb-3">
+                  <input type="text" class="form-control" [(ngModel)]="specialist.lname" id="floatingInput" placeholder="name@example.com" name="email">
+                  <label for="floatingInput">Last Name</label>
+              </div>
+
+                <div class="form-floating mb-3">
+                  <input type="text" class="form-control" [(ngModel)]="specialist.email" id="floatingInput" placeholder="name@example.com" name="email">
+                  <label for="floatingInput">Email</label>
+                </div>
+      
+                <div class="form-floating mb-3">
+                  <input type="password" class="form-control" [(ngModel)]="specialist.password" id="floatingPassword" placeholder="Password" name="password">
+                  <label for="floatingPassword">Password</label>
+                </div>
+      
+                  <div class="col-12">
+                  <button type="submit" class="btn btn-primary">Add Specialist to database!</button>
+                </div>
+          </form>
+      </div>
 
       </div>
     </body>
