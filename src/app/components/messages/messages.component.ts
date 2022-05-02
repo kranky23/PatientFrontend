@@ -18,12 +18,12 @@ export class MessagesComponent implements OnInit {
     this.login.deleteData()
     .subscribe(
       data=>{
-
+        localStorage.clear();
         console.log(data.fname);
         this.router.navigate(['home']);
-
       },
       error=>{
+        alert("Please remove consent");
         console.log(error)
       }
     )

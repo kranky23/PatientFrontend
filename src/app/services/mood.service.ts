@@ -25,7 +25,7 @@ export class MoodService {
     )
     const options = {responseType :  'text'}
     // {headers: header}
-    return this.http.post<string>(`${this.baseUrl}/patient/mood/${mood}/${pat_id}`,{responseType : 'text'});
+    return this.http.post<any>(`${this.baseUrl}/patient/mood/${mood}/${pat_id}`,{headers:header,responseType:'json'});
   }
 
   getBored()

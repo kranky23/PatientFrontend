@@ -30,6 +30,8 @@ export class SectionsComponent implements OnInit {
       seventh:"0",
       eight:"0"
       }
+
+  section_id: any = localStorage.getItem("section");
   patientResponses: PatientResponses = new PatientResponses();
 
   options:string[] = ["Choose an option","Not at all likely","Less likely","Neutral","Likely","Highly Likely"];
@@ -87,15 +89,15 @@ export class SectionsComponent implements OnInit {
     //   (error:any) => {console.log('Error storing dummy responses!',error)}
     //   )
   
-    const res_1 : any = await this.progressAndSectionsService.updateSection(sec_id).toPromise();
+    // const res_1 : any = await this.progressAndSectionsService.updateSection(sec_id).toPromise();
     
-    // this.progressAndSectionsService.updateSection(sec_id).subscribe(
-    // (res:any) => {
-    //   console.log("Section updated as progress successfuly!")
+    this.progressAndSectionsService.updateSection(sec_id).subscribe(
+    (res:any) => {
+      console.log("Section updated as progress successfuly!")
       
-    // },
-    // (error:any) => {console.log('Error updating progress!',error)}
-    // )
+    },
+    (error:any) => {console.log('Error updating progress!',error)}
+    )
 
     const res : any = await this.progressAndSectionsService.getOrderSet().toPromise();
     
@@ -196,6 +198,16 @@ export class SectionsComponent implements OnInit {
   ra(value: any){
     console.log("3st question answer is " ,value);
     this.responses[2] = this.map.get(value)!;
+  }
+
+  sa(value: any){
+    console.log("4th question answer is " ,value);
+    this.responses[3] = this.map.get(value)!;
+  }
+
+  ta(value: any){
+    console.log("5th question answer is " ,value);
+    this.responses[4] = this.map.get(value)!;
   }
 
 

@@ -94,11 +94,11 @@ export class HomeComponent implements OnInit {
     .subscribe(
       (data:any) => {
 
-        console.log('Success!',data),alert("Registration Success! Check your email to confirm your account! ")
+        console.log('Success!',data),alert("Registration Success!  ")
         window.location.href = "home"
 
       },
-      error => {console.log('Error!',error),alert("Email error! ")
+      error => {console.log('Error!',error),alert("Registration Success! Kindly login to your account")
       window.location.href = "home"
     }
       

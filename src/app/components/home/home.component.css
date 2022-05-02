@@ -116,7 +116,18 @@ body{
     text-transform: uppercase;
   }
 
-
+ #login-box-link:hover{
+   background-color: #1CB94E;
+ }
+#signup-box-link:hover
+{
+  background-color: #1CB94E;
+}
+ .vl {
+  
+  border-left: 3px solid green;
+  height: 20px;
+}
   /* testing another form here without JS */
 
 

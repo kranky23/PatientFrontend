@@ -64,7 +64,7 @@ export class AdminComponent implements OnInit {
     
     alert("New doctor added!")
     this.addDoctor = false;
-    this.ngOnInit();
+    this.showDoctors();
   }
 
   public async onAddSpecialist(specialistAdd : NgForm)
@@ -88,7 +88,7 @@ export class AdminComponent implements OnInit {
     
     alert("New Specialist added!")
     this.addSpecialist = false;
-    this.ngOnInit();
+    this.showSpecialists();
   }
 
   async showDoctors()

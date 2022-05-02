@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { PatientResponses } from '../patient-responses';
 
@@ -21,7 +21,13 @@ export class StoreResponsesService {
   }
 
   getConsent(pat_id:string){
-    return this.http.get(`${this.baseUrl}/consent/${pat_id}`);
+    let token = localStorage.getItem("token");
+    let header = new HttpHeaders(
+      {
+      Authorization : "Bearer " + token
+      }
+    )
+    return this.http.get(`${this.baseUrl}/consent/${pat_id}`,{headers:header,responseType:'json'});
   }
 
   grantPermission(pat_id:string, isConsent:string){

@@ -24,3 +24,8 @@ th {
     /* margin-right:200px; */
     float: right;
   }
+
+  .btn
+  {
+    margin-left: 10px;
+  }

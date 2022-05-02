@@ -104,3 +104,66 @@ h1 {
 .rwd-table th, .rwd-table td:before {
   color: #dd5;
 }
+
+
+
+
+/* css for the bullet points begin here */
+
+* {
+  font-family:sans-serif;  
+}
+
+body {
+  background:#37bfe1;
+  margin-top: 30px;
+  /* padding:50px; */
+  height: 250px;
+}
+
+/* h1 {
+  color:#fff;
+  text-align: center;
+  font-size: 30px;
+} */
+
+li {
+  color:#fff;
+  list-style:none;
+  position: relative;
+  padding-left:50px;
+  line-height: 2;
+  font-size:22px;
+  text-align: left;
+}
+
+li:before {
+  font-family:FontAwesome;
+  position: absolute;
+  left: 0;
+  color:#318ca0;
+  font-size:32px;
+}
+
+li.one:before {
+   content:"\f111"; 
+}
+li.two:before {
+   content:"\f00c";
+}
+li.three:before {
+   content:"\f10c";
+}
+li.four:before {
+   content:"\f004";
+}
+li.five:before {
+   content:"\f1e2";
+}
+li.six:before {
+   content:"\f0e7";
+}
+
+li:hover:before {
+  color:#fff;
+}

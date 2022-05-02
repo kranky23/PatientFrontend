@@ -9,10 +9,12 @@
         
         <body>
 
-          <a href="tasks" class="cbutton">BACK</a>
-          <h1 style="text-align: center;">Section 1</h1>
+          <a href="tasks" class="cbutton">
+            <img src="https://img.icons8.com/plasticine/100/000000/circled-left-2.png"/>
+          </a>
+          <h1 style="text-align: center;">Section {{section_id}}</h1>
         
-          <div *ngIf="questionsLoaded">
+          <div *ngIf="questionsLoaded" class>
           <!--Q5-->
           <form #patientForm="ngForm">
             
@@ -36,19 +38,19 @@
             </select>
             <br>
 
-            <!-- <label>{{questions[3].id}} ) {{questions[3].question}}</label>
-            <select class="form-control" #t (change)="callType(t.value)">
+            <label>{{questions[3].id}} ) {{questions[3].question}}</label>
+            <select class="form-control" #s (change)="sa(s.value)">
               <option *ngFor="let option of options" [value]="option">{{this.option}}</option>
             </select>
             <br>
 
             <label>{{questions[4].id}} ) {{questions[4].question}}</label>
-            <select class="form-control" #t (change)="callType(t.value)">
+            <select class="form-control" #t (change)="ta(t.value)">
               <option *ngFor="let option of options" [value]="option">{{this.option}}</option>
             </select>
-            <br> && responses[1]!=null && responses[2]!=null -->
+            <br> 
 
-            <button class="btn" type="submit" [disabled]="!(responses[0]&&responses[1]&&responses[2])" 
+            <button class="btn" type="submit" [disabled]="!(responses[0]&&responses[1]&&responses[2]&&responses[3]&&responses[4])" 
             
              name="submit" value="Submit" (click)="onSubmit()">Submit</button>
 

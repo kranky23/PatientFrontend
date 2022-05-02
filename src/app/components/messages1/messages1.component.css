@@ -163,7 +163,7 @@ body {
 }
 .chat .chat-message button {
   float: right;
-  color: #94C2ED;
+  color: #1f4b76;
   font-size: 16px;
   text-transform: uppercase;
   border: none;
@@ -211,4 +211,9 @@ body {
   content: " ";
   clear: both;
   height: 0;
+}
+
+.btn
+{
+  color: #86BB71;
 }

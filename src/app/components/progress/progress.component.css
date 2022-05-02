@@ -161,3 +161,14 @@ code {
   border: 0.1em solid #BDC3C7;
   border-radius: 50%;
 }
+
+.graph
+{
+  margin-left: 50%;
+  /* float:right; */
+}
+
+.myClass
+{
+  text-align: left;;
+}

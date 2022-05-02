@@ -33,17 +33,20 @@ export class TasksComponent implements OnInit {
 
 
 
-checkProgress()
+  async checkProgress()
 {
-  this.progressAndSectionsService.getCurrentSection().subscribe(
-    (data:any) => {
 
-      console.log("Current section is ",data);
-      this.progress = data;
+  const data : any = await this.progressAndSectionsService.getCurrentSection().toPromise();
+  this.progress = data;
+  // this.progressAndSectionsService.getCurrentSection().subscribe(
+  //   (data:any) => {
+
+  //     console.log("Current section is ",data);
+  //     this.progress = data;
       
-    },
-    (error:any) => {console.log('Error obtaining current section!',error)}
-  )
+  //   },
+  //   (error:any) => {console.log('Error obtaining current section!',error)}
+  // )
 
   this.progressAndSectionsService.getOrderSet().subscribe(
     (data:any) => 

@@ -23,7 +23,7 @@ const routes: Routes = [
   {path : 'register' , component : RegisterComponent }  ,
   {path : 'sections' , component : SectionsComponent, pathMatch : "full"},
   {path : 'home', children: [{path:'**', component:HomeComponent}]},
-  {path : 'messages' , component : MessagesComponent, pathMatch : "full"},
+  {path : 'deactivate' , component : MessagesComponent, pathMatch : "full"},
   {path : 'messages1' , component : Messages1Component, pathMatch : "full"},
   {path : 'tasks' , component : TasksComponent, pathMatch : "full"},
   {path : 'progress' , component : ProgressComponent, pathMatch : "full"},

@@ -30,6 +30,7 @@ export class LoginService {
 
   //for the user to logout..
   public logOut() {
+    localStorage.clear();
     localStorage.removeItem("token");
     // location.reload()
     return true;
@@ -40,11 +41,11 @@ export class LoginService {
   }
 
   public adminLogin(admin: Admin) {
-    return this.http.post(`${this.url}/adminLogin`, admin);
+    return this.http.post(`${this.url}/admin/adminLogin`, admin);
   }
 
   getDoctors() {
-    return this.http.get<any>(`${this.url}/getDoctors`, {
+    return this.http.get<any>(`${this.url}/admin/getDoctors`, {
       headers: {
         'Content-Type': 'application/json'
       },
@@ -52,7 +53,7 @@ export class LoginService {
   }
 
   getSpecialists() {
-    return this.http.get<any>(`${this.url}/getSpecialists`, {
+    return this.http.get<any>(`${this.url}/admin/getSpecialists`, {
       headers: {
         'Content-Type': 'application/json'
       },
@@ -60,14 +61,15 @@ export class LoginService {
   }
 
   addDoctor(doctor: Doctor) {
-    return this.http.post(`${this.url}/addDoctor`, doctor);
+    return this.http.post(`${this.url}/admin/addDoctor`, doctor);
   }
 
   addSpecialist(specialist: Specialist) {
-    return this.http.post(`${this.url}/addSpecialist`, specialist);
+    return this.http.post(`${this.url}/admin/addSpecialist`, specialist);
   }
 
   deleteData(){
+    localStorage.removeItem("token");
     return this.http.get<any>(`${this.url}/deleteData/${localStorage.getItem('id')}`)
   }
 
